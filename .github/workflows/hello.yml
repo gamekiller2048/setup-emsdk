@@ -29,13 +29,13 @@ jobs:
       run: npm run format
 
     - name: Upload package-lock.json artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: package-lock
         path: package-lock.json
 
     - name: Upload dist folder artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dist-files
         path: dist/
