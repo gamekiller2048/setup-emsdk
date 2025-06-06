@@ -1,4 +1,4 @@
-name: Build and Upload Artifacts
+name: Balls
 
 on:
   push:
@@ -10,16 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout repo
       uses: actions/checkout@v3
 
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-        cache: 'npm'
 
-    - name: Install dependencies
+    - name: Install dependencies (generates package-lock.json)
       run: npm install
 
     - name: Build project
@@ -28,13 +27,13 @@ jobs:
     - name: Format code
       run: npm run format
 
-    - name: Upload package-lock.json artifact
+    - name: Upload generated package-lock.json
       uses: actions/upload-artifact@v4
       with:
-        name: package-lock
+        name: package-lock-generated
         path: package-lock.json
 
-    - name: Upload dist folder artifact
+    - name: Upload dist folder
       uses: actions/upload-artifact@v4
       with:
         name: dist-files
